@@ -10,16 +10,12 @@ The ketstore `keystore.jks` and truststore `truststore.jks` file needs to presen
 export TRUSTSTORE_PASSWORD=<truststore-password>
 export KEYSTORE_PASSWORD=<keystore-password>
  
-# export TOPIC_NAME=openbanking.datarecipient.v1
 export TOPIC_NAME=<topic-name>
  
-# export SCHEMA_REGISTRY_URL=https://sit.schemaregistry.ee.extnp.national.com.au
 export BOOTSTRAP_SERVER=<bootstrap-server>
  
-# export CONSUMER_GROUP=ob-datarecipient-events
 export CONSUMER_GROUP=<consumer-group>
  
-# export SCHEMA_REGISTRY_URL=https://sit.schemaregistry.ee.extnp.national.com.au
 export SCHEMA_REGISTRY_URL=<schema-registry-url>
 ```
  
