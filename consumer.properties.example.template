@@ -1,0 +1,5 @@
+security.protocol = SSL
+ssl.truststore.location = truststore.jks
+ssl.truststore.password = 
+ssl.keystore.location = keystore.jks
+ssl.keystore.password = 

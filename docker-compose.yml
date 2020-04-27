@@ -1,0 +1,13 @@
+version: '2.1'
+
+services:
+  kafka-avro-console-consumer:
+    image: kafka-avro-console-consumer
+    build: 
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - http_proxy=
+        - https_proxy=
+        - HTTP_PROXY=
+        - HTTPS_PROXY=
