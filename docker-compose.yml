@@ -6,8 +6,3 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile
-      args:
-        - http_proxy=
-        - https_proxy=
-        - HTTP_PROXY=
-        - HTTPS_PROXY=

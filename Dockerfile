@@ -1,12 +1,19 @@
 ARG OPEN_JDK_VERSION=8u242-jre
+
 FROM openjdk:$OPEN_JDK_VERSION
 
+LABEL maintainer="Swapnil Desai"
+
+
 ENV \
-    AUTHOR=Swapnil Desai \
     CONFLUENT_MAJOR_VERSION=5 \
     CONFLUENT_MINOR_VERSION=3 \
     CONFLUENT_PATCH_VERSION=1 \
     CONFLUENT_SCALA_VERSION=2.12
+
+RUN \
+    apt-get update && \
+    apt-get install -y jq
 
 RUN \
     curl --fail --silent --show-error \
@@ -14,7 +21,7 @@ RUN \
         > /tmp/confluent-${CONFLUENT_MAJOR_VERSION}.${CONFLUENT_MINOR_VERSION}.${CONFLUENT_PATCH_VERSION}-${CONFLUENT_SCALA_VERSION}.tar.gz
 
 RUN \
-    tar -xvf \
+    tar -zxvf \
         /tmp/confluent-${CONFLUENT_MAJOR_VERSION}.${CONFLUENT_MINOR_VERSION}.${CONFLUENT_PATCH_VERSION}-${CONFLUENT_SCALA_VERSION}.tar.gz --directory / && \
     mv /confluent-${CONFLUENT_MAJOR_VERSION}.${CONFLUENT_MINOR_VERSION}.${CONFLUENT_PATCH_VERSION} /confluent && \
     # Delete unnecessary files
@@ -29,6 +36,6 @@ COPY ./docker-entrypoint.sh /
 
 RUN chmod +x /docker-entrypoint.sh
 
-ENTRYPOINT ["/docker-entrypoint.sh"]
+ENTRYPOINT ["sh", "/docker-entrypoint.sh"]
 
-CMD ["--help"]
+# CMD ["--help"]

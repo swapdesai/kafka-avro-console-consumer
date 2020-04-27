@@ -4,12 +4,11 @@ set -e
 if [ "$1" == "sh" ]; then
     $@
 else
-    echo $@
-    echo kafka-avro-console-consumer \
-        --bootstrap-server $BOOTSTAP_SERVER \
+    kafka-avro-console-consumer \
+        --bootstrap-server $BOOTSTRAP_SERVER \
         --topic $TOPIC_NAME \
         --property schema.registry.url=$SCHEMA_REGISTRY_URL \
-        --consumer.config ssl.properties \
+        --consumer.config consumer.properties \
         --group $CONSUMER_GROUP \
-        --from-beginning
+        --from-beginning | jq .
 fi
