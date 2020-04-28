@@ -30,6 +30,11 @@ RUN \
 
 RUN curl -L --http1.1 https://cnfl.io/cli | sh -s -- -b /confluent/bin
 
+RUN \
+    apt-get clean autoclean && \
+    apt-get autoremove --yes && \
+    rm -rf /var/lib/{apt,dpkg,cache,log}
+
 ENV PATH /confluent/bin:$PATH
 
 COPY ./docker-entrypoint.sh /
