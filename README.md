@@ -22,11 +22,15 @@ export SCHEMA_REGISTRY_URL=<schema-registry-url>
 ## Build the Docker container /app
 ```
 make build
-````
+```
 This step takes time to build the Docker image from Debain base image, install java and kafka tools and configure the cli.
  
+## Export the consumer properties file
+```
+make vars
+```
  
-## Run the Docker container /app
+## Run the Docker container / app
 ```
 make run
 ```

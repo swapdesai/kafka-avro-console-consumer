@@ -10,5 +10,6 @@ else
         --property schema.registry.url=$SCHEMA_REGISTRY_URL \
         --consumer.config consumer.properties \
         --group $CONSUMER_GROUP \
+        --max-messages 5 \
         --from-beginning | jq .
 fi
