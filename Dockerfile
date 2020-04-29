@@ -1,9 +1,6 @@
-ARG OPEN_JDK_VERSION=8u242-jre
-
-FROM openjdk:$OPEN_JDK_VERSION
+FROM confluentinc/cp-schema-registry:latest
 
 LABEL maintainer="Swapnil Desai"
-
 
 ENV \
     CONFLUENT_MAJOR_VERSION=5 \
@@ -15,20 +12,20 @@ RUN \
     apt-get update && \
     apt-get install -y jq
 
-RUN \
-    curl --fail --silent --show-error \
-        http://packages.confluent.io/archive/${CONFLUENT_MAJOR_VERSION}.${CONFLUENT_MINOR_VERSION}/confluent-${CONFLUENT_MAJOR_VERSION}.${CONFLUENT_MINOR_VERSION}.${CONFLUENT_PATCH_VERSION}-${CONFLUENT_SCALA_VERSION}.tar.gz \
-        > /tmp/confluent-${CONFLUENT_MAJOR_VERSION}.${CONFLUENT_MINOR_VERSION}.${CONFLUENT_PATCH_VERSION}-${CONFLUENT_SCALA_VERSION}.tar.gz
+# RUN \
+#     curl --fail --silent --show-error \
+#         http://packages.confluent.io/archive/${CONFLUENT_MAJOR_VERSION}.${CONFLUENT_MINOR_VERSION}/confluent-${CONFLUENT_MAJOR_VERSION}.${CONFLUENT_MINOR_VERSION}.${CONFLUENT_PATCH_VERSION}-${CONFLUENT_SCALA_VERSION}.tar.gz \
+#         > /tmp/confluent-${CONFLUENT_MAJOR_VERSION}.${CONFLUENT_MINOR_VERSION}.${CONFLUENT_PATCH_VERSION}-${CONFLUENT_SCALA_VERSION}.tar.gz
 
-RUN \
-    tar -zxvf \
-        /tmp/confluent-${CONFLUENT_MAJOR_VERSION}.${CONFLUENT_MINOR_VERSION}.${CONFLUENT_PATCH_VERSION}-${CONFLUENT_SCALA_VERSION}.tar.gz --directory / && \
-    mv /confluent-${CONFLUENT_MAJOR_VERSION}.${CONFLUENT_MINOR_VERSION}.${CONFLUENT_PATCH_VERSION} /confluent && \
-    # Delete unnecessary files
-    rm -rvf \
-        /tmp/confluent-${CONFLUENT_MAJOR_VERSION}.${CONFLUENT_MINOR_VERSION}.${CONFLUENT_PATCH_VERSION}-${CONFLUENT_SCALA_VERSION}.tar.gz
+# RUN \
+#     tar -zxvf \
+#         /tmp/confluent-${CONFLUENT_MAJOR_VERSION}.${CONFLUENT_MINOR_VERSION}.${CONFLUENT_PATCH_VERSION}-${CONFLUENT_SCALA_VERSION}.tar.gz --directory / && \
+#     mv /confluent-${CONFLUENT_MAJOR_VERSION}.${CONFLUENT_MINOR_VERSION}.${CONFLUENT_PATCH_VERSION} /confluent && \
+#     # Delete unnecessary files
+#     rm -rvf \
+#         /tmp/confluent-${CONFLUENT_MAJOR_VERSION}.${CONFLUENT_MINOR_VERSION}.${CONFLUENT_PATCH_VERSION}-${CONFLUENT_SCALA_VERSION}.tar.gz
 
-RUN curl -L --http1.1 https://cnfl.io/cli | sh -s -- -b /confluent/bin
+# RUN curl -L --http1.1 https://cnfl.io/cli | sh -s -- -b /confluent/bin
 
 RUN \
     apt-get clean autoclean && \

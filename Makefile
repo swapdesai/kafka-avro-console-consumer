@@ -11,6 +11,7 @@ DOCKER_RUN_KAFKA_AVRO_CONSOLE_CONSUMER=\
 	-e SCHEMA_REGISTRY_URL=${SCHEMA_REGISTRY_URL} \
 	-e CONSUMER_GROUP=${CONSUMER_GROUP} \
 	kafka-avro-console-consumer
+	# kafka-avro-console-consumer sh
 
 # CONSUMER_PROPERTIES is consumer.properties.template by default but can be overwritten
 CONSUMER_PROPERTIES ?= consumer.properties.template
