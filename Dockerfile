@@ -2,11 +2,11 @@ FROM confluentinc/cp-schema-registry:latest
 
 LABEL maintainer="Swapnil Desai"
 
-ENV \
-    CONFLUENT_MAJOR_VERSION=5 \
-    CONFLUENT_MINOR_VERSION=3 \
-    CONFLUENT_PATCH_VERSION=1 \
-    CONFLUENT_SCALA_VERSION=2.12
+# ENV \
+#     CONFLUENT_MAJOR_VERSION=5 \
+#     CONFLUENT_MINOR_VERSION=3 \
+#     CONFLUENT_PATCH_VERSION=1 \
+#     CONFLUENT_SCALA_VERSION=2.12
 
 RUN \
     apt-get update && \
