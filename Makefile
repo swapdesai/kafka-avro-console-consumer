@@ -2,8 +2,8 @@
 DOCKER_BUILD_KAFKA_AVRO_CONSOLE_CONSUMER=docker-compose build
 DOCKER_RUN_KAFKA_AVRO_CONSOLE_CONSUMER=\
 	docker run -it \
-	--mount type=bind,source=${PWD}/keystore.jks,target=/keystore.jks,readonly \
-	--mount type=bind,source=${PWD}/truststore.jks,target=/truststore.jks,readonly \
+	--mount type=bind,source=${KEYSTORE_FILE},target=/keystore.jks,readonly \
+	--mount type=bind,source=${TRUSTSTORE_FILE},target=/truststore.jks,readonly \
 	--mount type=bind,source=${PWD}/consumer.properties,target=/consumer.properties,readonly \
 	-e SCHEMA_REGISTRY_OPTS="-Djavax.net.ssl.trustStore=/truststore -Djavax.net.ssl.trustStorePassword=${TRUSTSTORE_PASSWORD} -Djavax.net.ssl.keyStore=/keystore -Djavax.net.ssl.keyStorePassword=${KEYSTORE_PASSWORD}" \
 	-e BOOTSTRAP_SERVER=${BOOTSTRAP_SERVER} \

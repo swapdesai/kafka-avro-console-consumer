@@ -3,12 +3,15 @@ Kakfa cli avro consumer built using 3 musketeers pattern (https://3musketeers.io
  
  
 ## Pre requisites
-The ketstore `keystore.jks` and truststore `truststore.jks` file needs to present in this directory to mount inside the container
+The keYstore `keystore.jks` and truststore `truststore.jks` file needs to be present in this directory to mount inside the container
  
 ## Export the following env variables on your host machine to interact with kafka
 ```
-export TRUSTSTORE_PASSWORD=<truststore-password>
+export KEYSTORE_FILE=<keystore-file>
+export TRUSTSTORE_FILE=<truststore-file>
+
 export KEYSTORE_PASSWORD=<keystore-password>
+export TRUSTSTORE_PASSWORD=<truststore-password>
  
 export TOPIC_NAME=<topic-name>
  
